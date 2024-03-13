@@ -4,10 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Sale;
+use App\Models\Product;
+
 
 class SaleDetail extends Model
 {
-    protected $fillable = ['sale_id', 'product_id', 'quantity', 'price'];
+    use HasFactory;
+
+    protected $fillable = [
+        'sale_id',
+        'product_id',
+        'jumlah_produk',
+        'subtotal',
+    ];
 
     public function sale()
     {

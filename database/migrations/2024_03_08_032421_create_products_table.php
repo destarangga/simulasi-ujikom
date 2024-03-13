@@ -12,7 +12,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('price', 10, 2);
-            $table->integer('stock'); // Kolom 'stok' dengan tipe data integer
+            $table->integer('stock'); 
             $table->timestamps();
         });
     }
