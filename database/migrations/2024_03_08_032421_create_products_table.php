@@ -13,6 +13,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->decimal('price', 10, 2);
             $table->integer('stock'); 
+            $table->string('image')->nullable(); // tambahkan kolom untuk URL gambar, dan buat nullable
             $table->timestamps();
         });
     }
@@ -22,3 +23,4 @@ class CreateProductsTable extends Migration
         Schema::dropIfExists('products');
     }
 }
+

@@ -24,9 +24,17 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required|numeric|min:0',
             'stock' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validate the image file
         ]);
 
-        Product::create($request->all());
+        $imagePath = $request->file('image')->store('product_images', 'public'); // Store the uploaded image
+
+        Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'stock' => $request->stock,
+            'image' => $imagePath,
+        ]);
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
@@ -42,10 +50,21 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required|numeric|min:0',
             'stock' => 'required',
-
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validate the image file
         ]);
 
-        $product->update($request->all());
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('product_images', 'public');
+            $product->update([
+                'image' => $imagePath,
+            ]);
+        }
+
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'stock' => $request->stock,
+        ]);
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }

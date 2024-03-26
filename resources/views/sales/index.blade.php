@@ -13,8 +13,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID Pelanggan</th>
-                                        <th>ID Produk</th>
+                                        <th>Nama Pelanggan</th>
                                         <th>Kuantitas</th>
                                         <th>Total Harga</th>
                                         <th>Tanggal Penjualan</th>
@@ -23,8 +22,7 @@
                                 <tbody>
                                     @foreach ($sales as $sale)
                                         <tr>
-                                            <td>{{ $sale->customer_id }}</td>
-                                            <td>{{ $sale->product_id }}</td>
+                                            <td>{{ $sale->customer->name }}</td>
                                             <td>{{ $sale->quantity }}</td>
                                             <td>{{ $sale->total_price }}</td>
                                             <td>{{ $sale->date }}</td>
